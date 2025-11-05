@@ -4,7 +4,8 @@ client = OpenAI(api_key="ENTER YOUR KEY HERE")
 
 response = client.chat.completions.create(
   model="gpt-4o-mini",
-  messages=[{"role":"user", "content":"Put the prompt here"}]
+  messages=[{"role":"user", "content":"Put the prompt here"}],
+  max_completion_tokens=100
 )
 
 print(response.choices[0].message.content)
