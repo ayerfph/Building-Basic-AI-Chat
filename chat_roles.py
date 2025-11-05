@@ -7,9 +7,9 @@
 # - Build on previous prompts and responses
 
 # Roles
-# - System : Controls assistant's behavior
-# - User : Instruct the assistant
-# - Assistant : response to user instruction
+# - System : Controls assistant's behavior (e.g. Important Template Formatting)
+# - User : Instruct the assistant (e.g. Example Conversations)
+# - Assistant : response to user instruction (e.g. Context Required For The New Input [often single-turn])
 
 # Can also be written by the developer to provide examples
 
@@ -48,5 +48,17 @@ response = client.chat.completions.create(
           {"role": "user", "content": "Which stocks should I invest in?"}]
 )
 
+# Utilizing assistant role
+response = client.chat.completions.create(
+  model="gpt-4o-mini",
+  messages=[{"role": "system",
+             "content": "You are a Python programmign tutor who speaks concisely."},
+            {"role": "user",
+             "content": "How do you define a Python List?"},
+            {"role": "assistant",
+             "content": "Lists are defined by enclosing a comma-separated sequence of objects inside square brackets [ ]."},
+            {"role": "user",
+             "content": "What is the difference between mutable and immutable objects?"}]
+)
 # Show output
 print(response.choices[0].message.content)
