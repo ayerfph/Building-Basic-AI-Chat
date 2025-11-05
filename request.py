@@ -7,4 +7,4 @@ response = client.chat.completions.create(
   messages=[{"role":"user", "content":"Put the prompt here"}]
 )
 
-print(response)
+print(response.choices[0].message.content)
